@@ -1,0 +1,41 @@
+from pydantic import BaseModel,Field,field_validator
+from typing import List,Dict,Literal,Annotated,Optional
+
+class UserInput(BaseModel):
+    Age:Annotated[int,Field(...,gt=0,lt=100,description="Age of an employee")]
+    BusinessTravel:Annotated[Literal['Travel_Rarely', 'Travel_Frequently', 'Non-Travel'],Field(...,description="How frequently an employee travels for business purpose")]
+    DailyRate:Annotated[int,Field(...,gt=0,description=" Amount an employee earns per day")]
+    Department:Annotated[Literal['Sales', 'Research & Development', 'Human Resources'],Field(...,description="Department with which employee belongs")]
+    DistanceFromHome:Annotated[int,Field(...,description="Distance between employee's home and office")]
+    Education:Annotated[Literal[1, 2, 3, 4, 5],Field(...,description="Education level of an employee")]
+    EducationField:Annotated[Literal['Life Sciences', 'Other', 'Medical', 'Marketing',
+       'Technical Degree', 'Human Resources'],Field(...,description="Educational background of an employee")]
+    EmployeeCount: Annotated[Literal[1], Field(1, description="Always 1")]
+    EmployeeNumber:Annotated[int,Field(...,gt=0,description="Employee Number of an employee")]
+    EnvironmentSatisfaction:Annotated[Literal[1,2,3,4],Field(...,description="Employee rating for company environment")]
+    Gender:Annotated[Literal["Male","Female"],Field(...,description="Employee Gender")]
+    HourlyRate:Annotated[int,Field(...,gt=0,description="Employee earning per unit time")]
+    JobInvolvement:Annotated[Literal[1,2,3,4],Field(...,description="Rating showing job involvement of an employee")]
+    JobLevel:Annotated[Literal[1,2,3,4,5],Field(...,description="Job level")]
+    JobRole:Annotated[Literal['Sales Executive', 'Research Scientist', 'Laboratory Technician',
+       'Manufacturing Director', 'Healthcare Representative', 'Manager',
+       'Sales Representative', 'Research Director', 'Human Resources'],Field(...,description="Employee's job role")]
+    JobSatisfaction:Annotated[Literal[1,2,3,4],Field(...,description="Employee's rating for their job satisfaction")]
+    MaritalStatus:Annotated[Literal['Single', 'Married', 'Divorced'],Field(...,description="Marital status of an Employee")]
+    MonthlyIncome:Annotated[int,Field(...,gt=0,description="Monthly income of an Employee")]
+    MonthlyRate:Annotated[int,Field(...,gt=0,description="Monthly rate of an Employee")]
+    NumCompaniesWorked:Annotated[Literal[0,1,2,3,4,5,6,7,8,9],Field(...,description="Number of different companies an employee worked")]
+    Over18: Annotated[Literal["Y"], Field("Y", description="Always Y (Employee is over 18)")]
+    OverTime:Annotated[Literal['Yes', 'No'],Field(...,description="Is Employee do overtime")]
+    PercentSalaryHike:Annotated[int,Field(...,gt=0,description="How much percentage hike employee gets on their salary")]
+    PerformanceRating:Annotated[Literal[1,2,3,4],Field(...,description="Performance rating of an Employee")]
+    RelationshipSatisfaction:Annotated[Literal[1,2,3,4],Field(...,description="Employee's relationship satisfaction")]
+    StandardHours: Annotated[Literal[80], Field(80, description="Standard hours per week (fixed)")]
+    StockOptionLevel:Annotated[Literal[1,2,3,4],Field(...,description="Stock Level")]
+    TotalWorkingYears:Annotated[int,Field(...,ge=0,description="Total working years of an Employee")]
+    TrainingTimesLastYear:Annotated[Literal[0,1,2,3,4,5,6],Field(...,description="Training times of last year")]
+    WorkLifeBalance:Annotated[Literal[1,2,3,4],Field(...,description="Work life balance of an Employee")]
+    YearsAtCompany:Annotated[int,Field(...,ge=0,description="Numbers of years from which employee is working in this company")]
+    YearsInCurrentRole:Annotated[int,Field(...,gt=0,description="Numbers of years from which employee is working on the same role in company")]
+    YearsSinceLastPromotion:Annotated[int,Field(...,ge=0,lt=15,description="Numbers of years since an Employee last promoted")]
+    YearsWithCurrManager:Annotated[int,Field(...,ge=0,lt=20,description="Numbers of years since an Employee is working with same manager")]
